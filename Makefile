@@ -111,84 +111,124 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DecryptImage
+# Target rules for targets named EncryptImageDCT
 
 # Build rule for target.
-DecryptImage: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DecryptImage
-.PHONY : DecryptImage
+EncryptImageDCT: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 EncryptImageDCT
+.PHONY : EncryptImageDCT
 
 # fast build rule for target.
-DecryptImage/fast:
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/build
-.PHONY : DecryptImage/fast
+EncryptImageDCT/fast:
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/build
+.PHONY : EncryptImageDCT/fast
 
 #=============================================================================
-# Target rules for targets named EncryptImage
+# Target rules for targets named DecryptImageLSB
 
 # Build rule for target.
-EncryptImage: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 EncryptImage
-.PHONY : EncryptImage
+DecryptImageLSB: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DecryptImageLSB
+.PHONY : DecryptImageLSB
 
 # fast build rule for target.
-EncryptImage/fast:
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/build
-.PHONY : EncryptImage/fast
+DecryptImageLSB/fast:
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/build
+.PHONY : DecryptImageLSB/fast
 
-DecryptImage.o: DecryptImage.cpp.o
+#=============================================================================
+# Target rules for targets named EncryptImageLSB
 
-.PHONY : DecryptImage.o
+# Build rule for target.
+EncryptImageLSB: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 EncryptImageLSB
+.PHONY : EncryptImageLSB
 
-# target to build an object file
-DecryptImage.cpp.o:
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/DecryptImage.cpp.o
-.PHONY : DecryptImage.cpp.o
+# fast build rule for target.
+EncryptImageLSB/fast:
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/build
+.PHONY : EncryptImageLSB/fast
 
-DecryptImage.i: DecryptImage.cpp.i
+DecryptImageLSB.o: DecryptImageLSB.cpp.o
 
-.PHONY : DecryptImage.i
-
-# target to preprocess a source file
-DecryptImage.cpp.i:
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/DecryptImage.cpp.i
-.PHONY : DecryptImage.cpp.i
-
-DecryptImage.s: DecryptImage.cpp.s
-
-.PHONY : DecryptImage.s
-
-# target to generate assembly for a file
-DecryptImage.cpp.s:
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/DecryptImage.cpp.s
-.PHONY : DecryptImage.cpp.s
-
-EncryptImage.o: EncryptImage.cpp.o
-
-.PHONY : EncryptImage.o
+.PHONY : DecryptImageLSB.o
 
 # target to build an object file
-EncryptImage.cpp.o:
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/EncryptImage.cpp.o
-.PHONY : EncryptImage.cpp.o
+DecryptImageLSB.cpp.o:
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/DecryptImageLSB.cpp.o
+.PHONY : DecryptImageLSB.cpp.o
 
-EncryptImage.i: EncryptImage.cpp.i
+DecryptImageLSB.i: DecryptImageLSB.cpp.i
 
-.PHONY : EncryptImage.i
+.PHONY : DecryptImageLSB.i
 
 # target to preprocess a source file
-EncryptImage.cpp.i:
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/EncryptImage.cpp.i
-.PHONY : EncryptImage.cpp.i
+DecryptImageLSB.cpp.i:
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/DecryptImageLSB.cpp.i
+.PHONY : DecryptImageLSB.cpp.i
 
-EncryptImage.s: EncryptImage.cpp.s
+DecryptImageLSB.s: DecryptImageLSB.cpp.s
 
-.PHONY : EncryptImage.s
+.PHONY : DecryptImageLSB.s
 
 # target to generate assembly for a file
-EncryptImage.cpp.s:
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/EncryptImage.cpp.s
-.PHONY : EncryptImage.cpp.s
+DecryptImageLSB.cpp.s:
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/DecryptImageLSB.cpp.s
+.PHONY : DecryptImageLSB.cpp.s
+
+EncryptImageDCT.o: EncryptImageDCT.cpp.o
+
+.PHONY : EncryptImageDCT.o
+
+# target to build an object file
+EncryptImageDCT.cpp.o:
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/EncryptImageDCT.cpp.o
+.PHONY : EncryptImageDCT.cpp.o
+
+EncryptImageDCT.i: EncryptImageDCT.cpp.i
+
+.PHONY : EncryptImageDCT.i
+
+# target to preprocess a source file
+EncryptImageDCT.cpp.i:
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/EncryptImageDCT.cpp.i
+.PHONY : EncryptImageDCT.cpp.i
+
+EncryptImageDCT.s: EncryptImageDCT.cpp.s
+
+.PHONY : EncryptImageDCT.s
+
+# target to generate assembly for a file
+EncryptImageDCT.cpp.s:
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/EncryptImageDCT.cpp.s
+.PHONY : EncryptImageDCT.cpp.s
+
+EncryptImageLSB.o: EncryptImageLSB.cpp.o
+
+.PHONY : EncryptImageLSB.o
+
+# target to build an object file
+EncryptImageLSB.cpp.o:
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/EncryptImageLSB.cpp.o
+.PHONY : EncryptImageLSB.cpp.o
+
+EncryptImageLSB.i: EncryptImageLSB.cpp.i
+
+.PHONY : EncryptImageLSB.i
+
+# target to preprocess a source file
+EncryptImageLSB.cpp.i:
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/EncryptImageLSB.cpp.i
+.PHONY : EncryptImageLSB.cpp.i
+
+EncryptImageLSB.s: EncryptImageLSB.cpp.s
+
+.PHONY : EncryptImageLSB.s
+
+# target to generate assembly for a file
+EncryptImageLSB.cpp.s:
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/EncryptImageLSB.cpp.s
+.PHONY : EncryptImageLSB.cpp.s
 
 # Help Target
 help:
@@ -198,14 +238,18 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... DecryptImage"
-	@echo "... EncryptImage"
-	@echo "... DecryptImage.o"
-	@echo "... DecryptImage.i"
-	@echo "... DecryptImage.s"
-	@echo "... EncryptImage.o"
-	@echo "... EncryptImage.i"
-	@echo "... EncryptImage.s"
+	@echo "... EncryptImageDCT"
+	@echo "... DecryptImageLSB"
+	@echo "... EncryptImageLSB"
+	@echo "... DecryptImageLSB.o"
+	@echo "... DecryptImageLSB.i"
+	@echo "... DecryptImageLSB.s"
+	@echo "... EncryptImageDCT.o"
+	@echo "... EncryptImageDCT.i"
+	@echo "... EncryptImageDCT.s"
+	@echo "... EncryptImageLSB.o"
+	@echo "... EncryptImageLSB.i"
+	@echo "... EncryptImageLSB.s"
 .PHONY : help
 
 

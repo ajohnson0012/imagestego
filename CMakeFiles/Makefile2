@@ -60,76 +60,113 @@ CMAKE_SOURCE_DIR = "/Users/alexjohnson/Documents/CPSC385/Final Project"
 CMAKE_BINARY_DIR = "/Users/alexjohnson/Documents/CPSC385/Final Project"
 
 #=============================================================================
-# Target rules for target CMakeFiles/DecryptImage.dir
+# Target rules for target CMakeFiles/EncryptImageDCT.dir
 
 # All Build rule for target.
-CMakeFiles/DecryptImage.dir/all:
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/depend
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" --progress-num=1,2 "Built target DecryptImage"
-.PHONY : CMakeFiles/DecryptImage.dir/all
+CMakeFiles/EncryptImageDCT.dir/all:
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/depend
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" --progress-num=3,4 "Built target EncryptImageDCT"
+.PHONY : CMakeFiles/EncryptImageDCT.dir/all
 
 # Include target in all.
-all: CMakeFiles/DecryptImage.dir/all
+all: CMakeFiles/EncryptImageDCT.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/DecryptImage.dir/rule: cmake_check_build_system
+CMakeFiles/EncryptImageDCT.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DecryptImage.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/EncryptImageDCT.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" 0
-.PHONY : CMakeFiles/DecryptImage.dir/rule
+.PHONY : CMakeFiles/EncryptImageDCT.dir/rule
 
 # Convenience name for target.
-DecryptImage: CMakeFiles/DecryptImage.dir/rule
+EncryptImageDCT: CMakeFiles/EncryptImageDCT.dir/rule
 
-.PHONY : DecryptImage
-
-# clean rule for target.
-CMakeFiles/DecryptImage.dir/clean:
-	$(MAKE) -f CMakeFiles/DecryptImage.dir/build.make CMakeFiles/DecryptImage.dir/clean
-.PHONY : CMakeFiles/DecryptImage.dir/clean
+.PHONY : EncryptImageDCT
 
 # clean rule for target.
-clean: CMakeFiles/DecryptImage.dir/clean
+CMakeFiles/EncryptImageDCT.dir/clean:
+	$(MAKE) -f CMakeFiles/EncryptImageDCT.dir/build.make CMakeFiles/EncryptImageDCT.dir/clean
+.PHONY : CMakeFiles/EncryptImageDCT.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/EncryptImageDCT.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/EncryptImage.dir
+# Target rules for target CMakeFiles/DecryptImageLSB.dir
 
 # All Build rule for target.
-CMakeFiles/EncryptImage.dir/all:
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/depend
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" --progress-num=3,4 "Built target EncryptImage"
-.PHONY : CMakeFiles/EncryptImage.dir/all
+CMakeFiles/DecryptImageLSB.dir/all:
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/depend
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" --progress-num=1,2 "Built target DecryptImageLSB"
+.PHONY : CMakeFiles/DecryptImageLSB.dir/all
 
 # Include target in all.
-all: CMakeFiles/EncryptImage.dir/all
+all: CMakeFiles/DecryptImageLSB.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/EncryptImage.dir/rule: cmake_check_build_system
+CMakeFiles/DecryptImageLSB.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/EncryptImage.dir/all
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/DecryptImageLSB.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" 0
-.PHONY : CMakeFiles/EncryptImage.dir/rule
+.PHONY : CMakeFiles/DecryptImageLSB.dir/rule
 
 # Convenience name for target.
-EncryptImage: CMakeFiles/EncryptImage.dir/rule
+DecryptImageLSB: CMakeFiles/DecryptImageLSB.dir/rule
 
-.PHONY : EncryptImage
-
-# clean rule for target.
-CMakeFiles/EncryptImage.dir/clean:
-	$(MAKE) -f CMakeFiles/EncryptImage.dir/build.make CMakeFiles/EncryptImage.dir/clean
-.PHONY : CMakeFiles/EncryptImage.dir/clean
+.PHONY : DecryptImageLSB
 
 # clean rule for target.
-clean: CMakeFiles/EncryptImage.dir/clean
+CMakeFiles/DecryptImageLSB.dir/clean:
+	$(MAKE) -f CMakeFiles/DecryptImageLSB.dir/build.make CMakeFiles/DecryptImageLSB.dir/clean
+.PHONY : CMakeFiles/DecryptImageLSB.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/DecryptImageLSB.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/EncryptImageLSB.dir
+
+# All Build rule for target.
+CMakeFiles/EncryptImageLSB.dir/all:
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/depend
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" --progress-num=5,6 "Built target EncryptImageLSB"
+.PHONY : CMakeFiles/EncryptImageLSB.dir/all
+
+# Include target in all.
+all: CMakeFiles/EncryptImageLSB.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/EncryptImageLSB.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/EncryptImageLSB.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles" 0
+.PHONY : CMakeFiles/EncryptImageLSB.dir/rule
+
+# Convenience name for target.
+EncryptImageLSB: CMakeFiles/EncryptImageLSB.dir/rule
+
+.PHONY : EncryptImageLSB
+
+# clean rule for target.
+CMakeFiles/EncryptImageLSB.dir/clean:
+	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/clean
+.PHONY : CMakeFiles/EncryptImageLSB.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/EncryptImageLSB.dir/clean
 
 .PHONY : clean
 

@@ -1,4 +1,5 @@
 /Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/edit_cache.dir
 /Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/rebuild_cache.dir
-/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/DecryptImage.dir
-/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/EncryptImage.dir
+/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/EncryptImageDCT.dir
+/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/DecryptImageLSB.dir
+/Users/alexjohnson/Documents/CPSC385/Final Project/CMakeFiles/EncryptImageLSB.dir
