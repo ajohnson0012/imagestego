@@ -57,7 +57,16 @@ int main(int argc, char** argv )
     // }
     
     double blueF [8][8];
-    double test [8][8];
+    double test [8][8] = {
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+      {133,134,136,138,137,134,131,129},
+    };
     double end [8][8];
     
     double QT[8][8] = {
@@ -77,19 +86,22 @@ int main(int argc, char** argv )
     int pos = 7;
     int eof = 0;
     
-    // std::cout << int(stego.at<cv::Vec3b>(5,5)[0]) << std::endl;
-    std::cout << "{" << std::endl;
-    for(int i=0;i<8;i++) {
-      std::cout << "{" << std::flush;
-      for(int j=0;j<7;j++) {
-        test[i][j] = int(stego.at<cv::Vec3b>(j,i)[0]);
-        std::cout << int(stego.at<cv::Vec3b>(j,i)[0]) << "," << std::flush;
-      }
-      test[i][7] = int(stego.at<cv::Vec3b>(7,i)[0]);
-      std::cout << int(stego.at<cv::Vec3b>(7,i)[0]) << "}" << std::endl;
-    }
+    double sample [8][8];
     
-    std::cout << "}" << std::endl;
+    std::cout << int(stego.at<cv::Vec3b>(5,5)[0]) << std::endl;
+    // std::cout << "{" << std::endl;
+    // for(int i=0;i<8;i++) {
+    //   std::cout << "{" << std::flush;
+    //   for(int j=0;j<7;j++) {
+    //     test[i][j] = int(stego.at<cv::Vec3b>(j,i)[0]);
+    //     std::cout << int(stego.at<cv::Vec3b>(j,i)[0]) << "," << std::flush;
+    //   }
+    //   test[i][7] = int(stego.at<cv::Vec3b>(7,i)[0]);
+    //   std::cout << int(stego.at<cv::Vec3b>(7,i)[0]) << "}" << std::endl;
+    // }
+    // 
+    // std::cout << "}" << std::endl;
+    // 
     std::cout << "" << std::endl;
     std::cout << "{" << std::endl;
     
@@ -210,8 +222,8 @@ int main(int argc, char** argv )
       std::cout << "}" << std::endl;
     }
     std::cout << "}" << std::endl;
-    end[0][0]--;
-    end[0][2]++;
+    // end[0][0]--;
+    // end[0][2]++;
     std::cout << "{" << std::endl;
     for(int i=0;i<8;i++) {
       std::cout << "" << std::flush;

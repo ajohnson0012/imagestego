@@ -39,12 +39,12 @@ int main(int argc, char** argv )
       charVal = (blue << 5) + (green << 2) + red;
       std::cout << blue << " " << green << " " << red << std::endl;
       std::cout << charVal << std::endl;
-      if (charVal == 32) {
-        output << "" << std::endl;
-      }
-      else {
+      // if (charVal == 32) {
+      //   output << "" << std::endl;
+      // }
+      // else {
         output << char(charVal) << std::flush;
-      }
+      // }
       xPixel++;
       if (xPixel>=stego.rows) {
         xPixel = 0;
