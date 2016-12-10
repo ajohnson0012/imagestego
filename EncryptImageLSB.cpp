@@ -55,6 +55,7 @@ int main(int argc, char** argv )
     //namedWindow("Display Image", WINDOW_AUTOSIZE );
     //imshow("Display Image", stego);
     imwrite("stego.png", stego);
+    secret.close();
 
     //waitKey(0);
 

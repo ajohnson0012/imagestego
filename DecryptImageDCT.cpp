@@ -13,33 +13,40 @@ double alpha(int val) {
   return 1;
 }
 
-int nextChar(std::ifstream &secret) {
-  char ch;
-  if(secret.eof()) return -1;
-  return int(secret.get(ch));
+int nextChar(std::ofstream &output, int charVal) {
+  // std::cout << "heyy" << std::endl;
+  if(charVal==0) return 0;
+  else {
+    // std::cout << "heey" << std::endl;
+    char ch = char(charVal);
+    if(charVal==32) output << "" << std::endl;
+    else output << ch << std::flush;
+    return 1;
+  }
 }
 
 int main(int argc, char** argv )
 {
-    if ( argc != 3 )
+    if ( argc != 2 )
     {
-        printf("usage: DecryptImageDCT.out <Image_Path>\n");
+        printf("usage: DecryptImageDCT <Image_Path>\n");
         return -1;
     }
 
-    Mat image, stego;
-    image = imread( argv[1], 1 );
+    Mat stego;
+    stego = imread( argv[1], 1 );
 
-    if ( !image.data )
+    if ( !stego.data )
     {
         printf("No image data \n");
         return -1;
     }
-    image.copyTo(stego);
-    std::ifstream secret;
-    secret.open(argv[2], std::fstream::in);
+    // image.copyTo(stego);
+    // std::ifstream secret;
+    // secret.open(argv[2], std::fstream::in);
     //secret.get(ch);
-    
+    std::ofstream output;
+    output.open("outputDCT.txt", std::fstream::out);
     
     /*double blueT [stego.cols][stego.rows];
     double greenT [stego.cols][stego.rows];
@@ -65,7 +72,8 @@ int main(int argc, char** argv )
       {72,92,95,98,112,100,103,99},
     };
     
-    char ch = nextChar(secret);
+    int ch = 0;
+    int pos = 0;
     
     // vector<vector<double> > blueT(stego.cols,vector<double>(stego.rows,0));      
     for(int i=0;i<stego.cols;i+=8) {
@@ -88,45 +96,107 @@ int main(int argc, char** argv )
               greensum+=greenpsum;
               redsum+=redpsum;
             }
-            blueF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*bluesum)/QT[u][v]);
-            if(std::abs(blueF[i+u][j+v])>1) {
-              if(ch>0) {
-                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])>>1))+(ch-(ch>>1));
-                ch = ch>>1;
+            // if(std::abs(blueF[i+u][j+v])>1) {
+            //   if(ch>0) {
+            //     stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])>>1))+(ch-(ch>>1));
+            //     ch = ch>>1;
+            //   }
+            //   else {
+            //     ch = nextChar(secret);
+            //     if(ch==-1) goto fin;
+            //     stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])>>1))+(ch-(ch>>1));
+            //     ch = ch>>1;
+            //   }
+            // }
+            redF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*redsum)/QT[u][v]);
+            if((redF[i+u][j+v]!=1)&&(redF[i+u][j+v]!=0)) {
+              if(pos<7) {
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[2]%2)<<pos;
+                std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                // std::cout << ch << std::endl;
+                pos++;
               }
               else {
-                ch = nextChar(secret);
-                if(ch==-1) goto fin;
-                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])>>1))+(ch-(ch>>1));
-                ch = ch>>1;
+                if(nextChar(output, ch)==0) goto fin;
+                pos = ch = 0;
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[2]%2)<<pos;
+                std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                pos++;
               }
             }
             greenF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*greensum)/QT[u][v]);
-            if(std::abs(greenF[i+u][j+v])>1) {
-              if(ch>0) {
-                stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])>>1))+(ch-(ch>>1));
-                ch = ch>>1;
+            if((greenF[i+u][j+v]!=1)&&(greenF[i+u][j+v]!=0)) {
+              if(pos<7) {
+                //std::cout << "hey" << std::endl;
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[1]%2)<<pos;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                // std::cout << ch << std::endl;
+                pos++;
               }
               else {
-                ch = nextChar(secret);
-                if(ch==-1) goto fin;
-                stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])>>1))+(ch-(ch>>1));
-                ch = ch>>1;
+                if(nextChar(output, ch)==0) goto fin;
+                pos = ch = 0;
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[1]%2)<<pos;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                pos++;
               }
             }
+            blueF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*bluesum)/QT[u][v]);
+            if((blueF[i+u][j+v]!=1)&&(blueF[i+u][j+v]!=0)) {
+              if(pos<7) {
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[0]%2)<<pos;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                // std::cout << ch << std::endl;
+                pos++;
+              }
+              else {
+                if(nextChar(output, ch)==0) goto fin;
+                pos = ch = 0;
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[0]%2)<<pos;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                pos++;
+              }
+            }
+            // if(std::abs(greenF[i+u][j+v])>1) {
+            //   if(ch>0) {
+            //     stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])>>1))+(ch-(ch>>1));
+            //     ch = ch>>1;
+            //   }
+            //   else {
+            //     ch = nextChar(secret);
+            //     if(ch==-1) goto fin;
+            //     stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])>>1))+(ch-(ch>>1));
+            //     ch = ch>>1;
+            //   }
+            // }
             redF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*redsum)/QT[u][v]);
-            if(std::abs(redF[i+u][j+v])>1) {
-              if(ch>0) {
-                stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])>>1))+(ch-(ch>>1));
-                ch = ch>>1;
+            if((redF[i+u][j+v]!=1)&&(redF[i+u][j+v]!=0)) {
+              if(pos<7) {
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[2]%2)<<pos;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                // std::cout << ch << std::endl;
+                pos++;
               }
               else {
-                ch = nextChar(secret);
-                if(ch==-1) goto fin;
-                stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])>>1))+(ch-(ch>>1));
-                ch = ch>>1;
+                if(nextChar(output, ch)==0) goto fin;
+                pos = ch = 0;
+                ch += (stego.at<cv::Vec3b>(j+v,i+u)[2]%2)<<pos;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                pos++;
               }
             }
+            // if(std::abs(redF[i+u][j+v])>1) {
+            //   if(ch>0) {
+            //     stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])>>1))+(ch-(ch>>1));
+            //     ch = ch>>1;
+            //   }
+            //   else {
+            //     ch = nextChar(secret);
+            //     if(ch==-1) goto fin;
+            //     stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])>>1))+(ch-(ch>>1));
+            //     ch = ch>>1;
+            //   }
+            // }
             // stego.at<cv::Vec3b>(j+v,i+u)[0] = blueF[i+u][j+v];
             // stego.at<cv::Vec3b>(j+v,i+u)[1] = greenF[i+u][j+v];
             // stego.at<cv::Vec3b>(j+v,i+u)[2] = redF[i+u][j+v];
@@ -134,11 +204,13 @@ int main(int argc, char** argv )
         }
       }
     }  
-    fin:namedWindow("Display Image", WINDOW_AUTOSIZE );
-    imshow("Display Image", stego);
-    imwrite("stego.png", stego);
+    // fin:namedWindow("Display Image", WINDOW_AUTOSIZE );
+    // imshow("Display Image", stego);
+    // imwrite("stego.png", stego);
 
-    waitKey(0);
+    // waitKey(0);
+    
+    fin:output.close();
     
     for (int i=stego.cols;i>0;) {
       delete[] redF[--i];

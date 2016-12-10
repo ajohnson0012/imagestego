@@ -15,8 +15,10 @@ double alpha(int val) {
 
 int nextChar(std::ifstream &secret) {
   char ch;
-  if(secret.eof()) return -1;
-  return int(secret.get(ch));
+  if(secret.eof()) return 0;
+  secret.get(ch);
+  std::cout << ch << " " << int(ch) << std::endl;
+  return int(ch);
 }
 
 int main(int argc, char** argv )
@@ -65,7 +67,13 @@ int main(int argc, char** argv )
       {72,92,95,98,112,100,103,99},
     };
     
-    char ch = nextChar(secret);
+    int ch = nextChar(secret);
+    
+    std::cout << ch << std::endl;
+    int pos = 7;
+    int eof = 0;
+    
+    std::cout << int(stego.at<cv::Vec3b>(5,5)[0]) << std::endl;
     
     // vector<vector<double> > blueT(stego.cols,vector<double>(stego.rows,0));      
     for(int i=0;i<stego.cols;i+=8) {
@@ -89,42 +97,77 @@ int main(int argc, char** argv )
               redsum+=redpsum;
             }
             blueF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*bluesum)/QT[u][v]);
-            if(std::abs(blueF[i+u][j+v])>1) {
-              if(ch>0) {
-                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])>>1))+(ch-(ch>>1));
+            if((blueF[i+u][j+v]!=1)&&(blueF[i+u][j+v]!=0)) {
+              if(pos>0) {
+                std::cout << blueF[i+u][j+v] << std::endl;
+                std::cout << (int(blueF[i+u][j+v])%2) << std::endl;
+                std::cout << (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2)) << std::endl;
+                std::cout << ch << std::endl;
+                std::cout << (ch%2) << std::endl;
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << " " << std::flush;
+                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2))+(ch%2);
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << std::endl;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
+                pos--;
+                if((pos==0)&&(eof==1)) goto fin;
               }
               else {
                 ch = nextChar(secret);
-                if(ch==-1) goto fin;
-                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])>>1))+(ch-(ch>>1));
+                pos = 7;
+                if(ch==0) eof = 1;//goto fin;
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << " " << std::flush;
+                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2))+(ch%2);
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << std::endl;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
+                pos--;
               }
             }
             greenF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*greensum)/QT[u][v]);
-            if(std::abs(greenF[i+u][j+v])>1) {
-              if(ch>0) {
-                stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])>>1))+(ch-(ch>>1));
+            if((greenF[i+u][j+v]!=1)&&(greenF[i+u][j+v]!=0)) {
+              if(pos>0) {
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << " " << std::flush;
+                stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])%2))+(ch%2);
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << std::endl;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
+                pos--;
+                if((pos==0)&&(eof==1)) goto fin;
               }
               else {
                 ch = nextChar(secret);
-                if(ch==-1) goto fin;
-                stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])>>1))+(ch-(ch>>1));
+                pos = 7;
+                if(ch==0) eof = 1;
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << " " << std::flush;
+                stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])%2))+(ch%2);
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << std::endl;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
+                pos--;
               }
             }
             redF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*redsum)/QT[u][v]);
-            if(std::abs(redF[i+u][j+v])>1) {
-              if(ch>0) {
-                stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])>>1))+(ch-(ch>>1));
+            if((redF[i+u][j+v]!=1)&&(redF[i+u][j+v]!=0)) {
+              if(pos>0) {
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << " " << std::flush;
+                stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])%2))+(ch%2);
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << std::endl;
+                std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
+                pos--;
+                if((pos==0)&&(eof==1)) goto fin;
               }
               else {
                 ch = nextChar(secret);
-                if(ch==-1) goto fin;
-                stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])>>1))+(ch-(ch>>1));
+                pos = 7;
+                if(ch==0) eof = 1;
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << " " << std::flush;
+                stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])%2))+(ch%2);
+                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << std::endl;
+                std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
+                pos--;
               }
             }
             // stego.at<cv::Vec3b>(j+v,i+u)[0] = blueF[i+u][j+v];
@@ -135,12 +178,14 @@ int main(int argc, char** argv )
       }
     }
     
-    for(int i=0;i<8;i++) {
-      for(int j=0;j<7;j++) {
-        std::cout << blueF[i][j] << "," << std::flush;
-      }
-      std::cout << blueF[i][7] << std::endl;
-    }
+    // for(int i=0;i<8;i++) {
+    //   for(int j=0;j<7;j++) {
+    //     std::cout << blueF[i][j] << "," << std::flush;
+    //   }
+    //   std::cout << blueF[i][7] << std::endl;
+    // }
+    
+    std::cout << "Error: Message is too long to encode" << std::endl;
 
 
 
@@ -211,6 +256,8 @@ int main(int argc, char** argv )
     imwrite("stego.png", stego);
 
     waitKey(0);
+    
+    secret.close();
     
     for (int i=stego.cols;i>0;) {
       delete[] redF[--i];

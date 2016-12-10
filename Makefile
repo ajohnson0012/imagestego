@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named DecryptImageDCT
+
+# Build rule for target.
+DecryptImageDCT: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 DecryptImageDCT
+.PHONY : DecryptImageDCT
+
+# fast build rule for target.
+DecryptImageDCT/fast:
+	$(MAKE) -f CMakeFiles/DecryptImageDCT.dir/build.make CMakeFiles/DecryptImageDCT.dir/build
+.PHONY : DecryptImageDCT/fast
+
+#=============================================================================
 # Target rules for targets named EncryptImageDCT
 
 # Build rule for target.
@@ -148,6 +161,33 @@ EncryptImageLSB: cmake_check_build_system
 EncryptImageLSB/fast:
 	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/build
 .PHONY : EncryptImageLSB/fast
+
+DecryptImageDCT.o: DecryptImageDCT.cpp.o
+
+.PHONY : DecryptImageDCT.o
+
+# target to build an object file
+DecryptImageDCT.cpp.o:
+	$(MAKE) -f CMakeFiles/DecryptImageDCT.dir/build.make CMakeFiles/DecryptImageDCT.dir/DecryptImageDCT.cpp.o
+.PHONY : DecryptImageDCT.cpp.o
+
+DecryptImageDCT.i: DecryptImageDCT.cpp.i
+
+.PHONY : DecryptImageDCT.i
+
+# target to preprocess a source file
+DecryptImageDCT.cpp.i:
+	$(MAKE) -f CMakeFiles/DecryptImageDCT.dir/build.make CMakeFiles/DecryptImageDCT.dir/DecryptImageDCT.cpp.i
+.PHONY : DecryptImageDCT.cpp.i
+
+DecryptImageDCT.s: DecryptImageDCT.cpp.s
+
+.PHONY : DecryptImageDCT.s
+
+# target to generate assembly for a file
+DecryptImageDCT.cpp.s:
+	$(MAKE) -f CMakeFiles/DecryptImageDCT.dir/build.make CMakeFiles/DecryptImageDCT.dir/DecryptImageDCT.cpp.s
+.PHONY : DecryptImageDCT.cpp.s
 
 DecryptImageLSB.o: DecryptImageLSB.cpp.o
 
@@ -238,9 +278,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... DecryptImageDCT"
 	@echo "... EncryptImageDCT"
 	@echo "... DecryptImageLSB"
 	@echo "... EncryptImageLSB"
+	@echo "... DecryptImageDCT.o"
+	@echo "... DecryptImageDCT.i"
+	@echo "... DecryptImageDCT.s"
 	@echo "... DecryptImageLSB.o"
 	@echo "... DecryptImageLSB.i"
 	@echo "... DecryptImageLSB.s"

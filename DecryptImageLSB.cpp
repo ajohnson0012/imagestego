@@ -73,6 +73,7 @@ int main(int argc, char** argv )
     //imwrite("stego.png", stego);
 
     //waitKey(0);
+    output.close();
 
     return 0;
 }
