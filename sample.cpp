@@ -59,10 +59,10 @@ int main(int argc, char** argv )
     double blueF [8][8];
     double test [8][8] = {
       {133,134,136,138,137,134,131,129},
+      {133,136,136,138,137,134,131,129},
       {133,134,136,138,137,134,131,129},
-      {133,134,136,138,137,134,131,129},
-      {133,134,136,138,137,134,131,129},
-      {133,134,136,138,137,134,131,129},
+      {133,134,136,38,137,134,131,129},
+      {133,134,136,138,127,134,131,129},
       {133,134,136,138,137,134,131,129},
       {133,134,136,138,137,134,131,129},
       {133,134,136,138,137,134,131,129},
@@ -88,20 +88,21 @@ int main(int argc, char** argv )
     
     double sample [8][8];
     
-    std::cout << int(stego.at<cv::Vec3b>(5,5)[0]) << std::endl;
-    // std::cout << "{" << std::endl;
-    // for(int i=0;i<8;i++) {
-    //   std::cout << "{" << std::flush;
-    //   for(int j=0;j<7;j++) {
-    //     test[i][j] = int(stego.at<cv::Vec3b>(j,i)[0]);
-    //     std::cout << int(stego.at<cv::Vec3b>(j,i)[0]) << "," << std::flush;
-    //   }
-    //   test[i][7] = int(stego.at<cv::Vec3b>(7,i)[0]);
-    //   std::cout << int(stego.at<cv::Vec3b>(7,i)[0]) << "}" << std::endl;
-    // }
-    // 
-    // std::cout << "}" << std::endl;
-    // 
+    int set = 8;
+    
+    std::cout << "{" << std::endl;
+    for(int i=0;i<8;i++) {
+      std::cout << "{" << std::flush;
+      for(int j=0;j<7;j++) {
+        test[i][j] = int(stego.at<cv::Vec3b>(j+set,i)[0]);
+        std::cout << int(stego.at<cv::Vec3b>(j+set,i)[0]) << "," << std::flush;
+      }
+      test[i][7] = int(stego.at<cv::Vec3b>(7+set,i)[0]);
+      std::cout << int(stego.at<cv::Vec3b>(7+set,i)[0]) << "}" << std::endl;
+    }
+    
+    std::cout << "}" << std::endl;
+    
     std::cout << "" << std::endl;
     std::cout << "{" << std::endl;
     
@@ -259,6 +260,7 @@ int main(int argc, char** argv )
         // std::cout << int(stego.at<cv::Vec3b>(y,x)[0]) << " " << std::flush;
         // stego.at<cv::Vec3b>(y,x)[0] = blueF[x][y];
         test[x][y] = round(blueF[x][y]);
+        if(test[x][y]>255) test[x][y]=255;
         // std::cout << int(stego.at<cv::Vec3b>(y,x)[0]) << "," << std::flush;
         std::cout << test[x][y] << "," << std::flush;
       }

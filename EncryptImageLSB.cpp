@@ -1,3 +1,13 @@
+/**
+ *
+ *    This 
+ *
+ *
+ *
+ *
+**/ 
+
+
 #include <stdio.h>
 #include <opencv2/opencv.hpp>
 #include <fstream>
@@ -27,12 +37,9 @@ int main(int argc, char** argv )
     char ch;
     char END_OF_FILE = '#';
     secret.get(ch);
-    //std::cout << stego.rows << std::endl;
-    //std::cout << stego.cols << std::endl;
     int xPixel = 0;
     int yPixel = 0;
     while (!secret.eof()) {
-      //std::cout << ch << std::endl;
       std::cout << int(ch) << std::endl;
       
       int blue = int(ch) >> 5;
@@ -51,13 +58,8 @@ int main(int argc, char** argv )
     }
     stego.at<cv::Vec3b>(xPixel,yPixel)[0] = ((stego.at<cv::Vec3b>(xPixel,yPixel)[0] >> 3) << 3);
     stego.at<cv::Vec3b>(xPixel,yPixel)[1] = ((stego.at<cv::Vec3b>(xPixel,yPixel)[1] >> 3) << 3);
-    stego.at<cv::Vec3b>(xPixel,yPixel)[2] = ((stego.at<cv::Vec3b>(xPixel,yPixel)[2] >> 2) << 2);     
-    //namedWindow("Display Image", WINDOW_AUTOSIZE );
-    //imshow("Display Image", stego);
+    stego.at<cv::Vec3b>(xPixel,yPixel)[2] = ((stego.at<cv::Vec3b>(xPixel,yPixel)[2] >> 2) << 2);
     imwrite("stego.png", stego);
     secret.close();
-
-    //waitKey(0);
-
     return 0;
 }
