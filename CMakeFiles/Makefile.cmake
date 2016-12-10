@@ -49,6 +49,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/sample.dir/DependInfo.cmake"
   "CMakeFiles/DecryptImageDCT.dir/DependInfo.cmake"
   "CMakeFiles/EncryptImageDCT.dir/DependInfo.cmake"
   "CMakeFiles/DecryptImageLSB.dir/DependInfo.cmake"

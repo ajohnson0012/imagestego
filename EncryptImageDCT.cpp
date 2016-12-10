@@ -99,14 +99,15 @@ int main(int argc, char** argv )
             blueF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*bluesum)/QT[u][v]);
             if((blueF[i+u][j+v]!=1)&&(blueF[i+u][j+v]!=0)) {
               if(pos>0) {
-                std::cout << blueF[i+u][j+v] << std::endl;
-                std::cout << (int(blueF[i+u][j+v])%2) << std::endl;
-                std::cout << (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2)) << std::endl;
-                std::cout << ch << std::endl;
-                std::cout << (ch%2) << std::endl;
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << " " << std::flush;
-                stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2))+(ch%2);
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << std::endl;
+                // std::cout << blueF[i+u][j+v] << std::endl;
+                // std::cout << (int(blueF[i+u][j+v])%2) << std::endl;
+                // std::cout << (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2)) << std::endl;
+                // std::cout << ch << std::endl;
+                // std::cout << (ch%2) << std::endl;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << " " << std::flush;
+                // stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2))+(ch%2);
+                blueF[i+u][j+v] = 
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << std::endl;
                 // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
                 pos--;
@@ -116,9 +117,9 @@ int main(int argc, char** argv )
                 ch = nextChar(secret);
                 pos = 7;
                 if(ch==0) eof = 1;//goto fin;
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << " " << std::flush;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << " " << std::flush;
                 stego.at<cv::Vec3b>(j+v,i+u)[0] = (blueF[i+u][j+v]-(int(blueF[i+u][j+v])%2))+(ch%2);
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << std::endl;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[0]) << std::endl;
                 // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
                 pos--;
@@ -127,9 +128,9 @@ int main(int argc, char** argv )
             greenF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*greensum)/QT[u][v]);
             if((greenF[i+u][j+v]!=1)&&(greenF[i+u][j+v]!=0)) {
               if(pos>0) {
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << " " << std::flush;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << " " << std::flush;
                 stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])%2))+(ch%2);
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << std::endl;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << std::endl;
                 // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
                 pos--;
@@ -139,9 +140,9 @@ int main(int argc, char** argv )
                 ch = nextChar(secret);
                 pos = 7;
                 if(ch==0) eof = 1;
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << " " << std::flush;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << " " << std::flush;
                 stego.at<cv::Vec3b>(j+v,i+u)[1] = (greenF[i+u][j+v]-(int(greenF[i+u][j+v])%2))+(ch%2);
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << std::endl;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[1]) << std::endl;
                 // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
                 pos--;
@@ -150,10 +151,10 @@ int main(int argc, char** argv )
             redF[i+u][j+v] = round((0.25*alpha(u)*alpha(v)*redsum)/QT[u][v]);
             if((redF[i+u][j+v]!=1)&&(redF[i+u][j+v]!=0)) {
               if(pos>0) {
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << " " << std::flush;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << " " << std::flush;
                 stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])%2))+(ch%2);
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << std::endl;
-                std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << std::endl;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
                 pos--;
                 if((pos==0)&&(eof==1)) goto fin;
@@ -162,10 +163,10 @@ int main(int argc, char** argv )
                 ch = nextChar(secret);
                 pos = 7;
                 if(ch==0) eof = 1;
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << " " << std::flush;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << " " << std::flush;
                 stego.at<cv::Vec3b>(j+v,i+u)[2] = (redF[i+u][j+v]-(int(redF[i+u][j+v])%2))+(ch%2);
-                std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << std::endl;
-                std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
+                // std::cout << int(stego.at<cv::Vec3b>(j+v,i+u)[2]) << std::endl;
+                // std::cout << "[" << (i+u) << "," << (j+v) << "]" << std::endl;
                 ch = ch>>1;
                 pos--;
               }
@@ -173,6 +174,11 @@ int main(int argc, char** argv )
             // stego.at<cv::Vec3b>(j+v,i+u)[0] = blueF[i+u][j+v];
             // stego.at<cv::Vec3b>(j+v,i+u)[1] = greenF[i+u][j+v];
             // stego.at<cv::Vec3b>(j+v,i+u)[2] = redF[i+u][j+v];
+          }
+        }
+        for(int u=0;u<8;u++) {
+          for(int v=0;v<8;v++) {
+            
           }
         }
       }

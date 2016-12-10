@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named sample
+
+# Build rule for target.
+sample: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sample
+.PHONY : sample
+
+# fast build rule for target.
+sample/fast:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/build
+.PHONY : sample/fast
+
+#=============================================================================
 # Target rules for targets named DecryptImageDCT
 
 # Build rule for target.
@@ -270,6 +283,33 @@ EncryptImageLSB.cpp.s:
 	$(MAKE) -f CMakeFiles/EncryptImageLSB.dir/build.make CMakeFiles/EncryptImageLSB.dir/EncryptImageLSB.cpp.s
 .PHONY : EncryptImageLSB.cpp.s
 
+sample.o: sample.cpp.o
+
+.PHONY : sample.o
+
+# target to build an object file
+sample.cpp.o:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/sample.cpp.o
+.PHONY : sample.cpp.o
+
+sample.i: sample.cpp.i
+
+.PHONY : sample.i
+
+# target to preprocess a source file
+sample.cpp.i:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/sample.cpp.i
+.PHONY : sample.cpp.i
+
+sample.s: sample.cpp.s
+
+.PHONY : sample.s
+
+# target to generate assembly for a file
+sample.cpp.s:
+	$(MAKE) -f CMakeFiles/sample.dir/build.make CMakeFiles/sample.dir/sample.cpp.s
+.PHONY : sample.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -278,6 +318,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... sample"
 	@echo "... DecryptImageDCT"
 	@echo "... EncryptImageDCT"
 	@echo "... DecryptImageLSB"
@@ -294,6 +335,9 @@ help:
 	@echo "... EncryptImageLSB.o"
 	@echo "... EncryptImageLSB.i"
 	@echo "... EncryptImageLSB.s"
+	@echo "... sample.o"
+	@echo "... sample.i"
+	@echo "... sample.s"
 .PHONY : help
 
 
